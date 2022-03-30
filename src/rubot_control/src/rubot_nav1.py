@@ -29,14 +29,14 @@ def move_rubot(lin_velx,lin_vely,ang_vel,distance):
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
     rospy.Subscriber('/odom',Odometry, odom_callback)
     rate = rospy.Rate(10) # 10hz
-    vel = Twist()
+    vel = 5*Twist()
     while not rospy.is_shutdown():
-        vel.linear.x = lin_velx
-        vel.linear.y = lin_vely
+        vel.linear.x = 5*lin_velx
+        vel.linear.y = 5*lin_vely
         vel.linear.z = 0
         vel.angular.x = 0
         vel.angular.y = 0
-        vel.angular.z = ang_vel
+        vel.angular.z = 5*ang_vel
         rospy.loginfo("Linear Vel_x = %f: Linear Vel_y = %f: Angular Vel = %f",lin_velx,lin_vely,ang_vel)
 
         if(robot_y >= distance):
